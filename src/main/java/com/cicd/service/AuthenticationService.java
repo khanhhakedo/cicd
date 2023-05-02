@@ -7,6 +7,7 @@ import com.cicd.entity.User;
 import com.cicd.repository.RoleCustomRepo;
 import com.cicd.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -17,7 +18,9 @@ import java.util.*;
 @Service
 @RequiredArgsConstructor
 public class AuthenticationService {
+    @Autowired
     private final UserRepository userRepository;
+    @Autowired
     private final AuthenticationManager authenticationManager;
     private final RoleCustomRepo roleCustomRepo;
     private final JwtService jwtService;
