@@ -18,11 +18,11 @@ public class RoleCustomRepo {
     @PersistenceContext
     private EntityManager entityManager;
     public List<Role> getRole(User user){
-        StringBuffer sql = new StringBuffer().append("select r.name as name from users u join user_role us on u.id = ur.users.id\n"+
+        StringBuffer sql = new StringBuffer().append("select r.name as name from users u join user_role ur on u.id = ur.users_id\n"+
                 "join roles r on r.id = ur.roles_id");
-        sql.append("Where 1=1");
+        sql.append(" Where 1=1");
         if (user.getEmail() != null){
-            sql.append("and email = :email");
+            sql.append(" and email = :email");
         }
         NativeQuery<Role> query = ((Session) entityManager.getDelegate()).createNativeQuery(sql.toString());
         if (user.getEmail() !=null){
